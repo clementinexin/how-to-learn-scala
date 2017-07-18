@@ -8,3 +8,5 @@ libraryDependencies += "org.scalatest" % "scalatest_2.11" % "2.2.4" % "test"
 
 libraryDependencies += "com.typesafe.akka" %% "akka-actor" % "2.4.14"
 
+libraryDependencies += "org.functionaljava" % "functionaljava" % "4.2"
+

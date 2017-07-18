@@ -1,0 +1,75 @@
+public static String cleanNames(listOfNames) {
+    listOfNames
+        .findAll{it.length >1}
+        .collect{it.capitalize()}
+        .join(",")
+}
+
+static def factors(number) {
+    (1..number).findAll{number % it == 0}
+}
+
+static def factorsUnique(number) {
+    def factors = (1..round(sqrt(number)+1)).findAll{number % it ==0}
+    (factors + factors.collect {number /it}).unique()
+}
+
+static def sumOfFactors(number) {
+    factors(number).inject(0,{i,j -> i+ j})
+}
+
+(1..10).split {it % 3 == 0}
+
+(1..10).find {it % 3 == 0}
+
+(1..10).find {it < 0}
+
+(1..10).takeWhile {it > 0}
+
+(1..10).dropWhile {it > 0}
+
+(1..5).collect{it + 1}
+
+def words = ["the", "quick", "brown", "fox", "jumped", "over", "the", "lazy", "dog"]
+words.collect {it.length()}
+
+[ [1, 2, 3], [4, 5, 6], [7, 8, 9] ].flatten()
+
+(words.collect{it.toList()}).flatten()
+
+(1..10).inject {a,b -> a+b}
+
+(1..10).inject(0,{a,b -> a+b})
+
+def numbers = [6, 28, 4, 9, 12, 4, 8, 8, 11, 45, 99, 2]
+def recurList(listOfNums) {
+    if (listOfNums.size == 0) return
+    println "${listOfNums.head()}"
+    recurList(listOfNums.tail())
+}
+
+recurList(numbers)
+
+
+def filter(list, predicate) {
+    def new_list = []
+    list.each {
+        if (predicate(it)) { new_list << it }
+    }
+    return new_list
+}
+
+modBy2 = { n -> n % 2 == 0}
+l = filter(1..20, modBy2)
+println l
+
+def recurFilter(list,predicate) {
+    if (list.size <= 0) return list
+    if (predicate(list.head())) {
+        [] + list.head() + recurFilter(list.tail(),predicate)
+    } else {
+        recurFilter(list.tail(),predicate)
+    }
+}
+
+println recurFilter(1..10,{it % 3 == 0})
